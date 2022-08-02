@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @fav_color %>
+
+<div>
+  <%= link_to "Edit", edit_fav_color_path(@fav_color) %> |
+  <%= link_to "Done", fav_colors_path %>
+
+  <a style="color:#ff4400"><%= button_to "DELETE", @fav_color, method: :delete %></a>
+</div>

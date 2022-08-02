@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First Rails Project</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body data-no-turbolink="true">
+    <center><a href="/"><h1>My First Rails Project</h1></a></center>
+    <% if user_signed_in? %><%= button_to "Sign Out", destroy_user_session_path, method: :delete %><%= link_to "Modify Account", edit_user_registration_path %><% else %><%= link_to "Sign Up", new_user_registration_path %> | <%= link_to "Sign In", new_user_session_path %><% end %>
+    <hr/>
+    <p class="notice" style="color:#f44;background-color:#000;"><%= notice %></p>
+    <p class="alert" style="color:#ff0;background-color:#000;"><%= alert %></p>
+    <div class="main"><%= yield %></div>
+  </body>
+</html>

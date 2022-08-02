@@ -1,0 +1,81 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Our favorite colors</h1>
+
+<style type="text/css">
+  .darkened .mine
+  {
+    background-image:linear-gradient(#eeeedd,#ccccbb);
+  }
+  .darkened .mine:nth-child(even)
+  {
+    background-image:linear-gradient(#e8ddee,#c6bbcc);
+  }
+  .darkened .mine:hover
+  {
+    background-color:#ffffff;
+    background-image:linear-gradient(#eee,#fff);
+    color:#000000;
+  }
+  .darkened .yours
+  {
+    background-image:linear-gradient(#88000022,#44222222);
+    color:#ffffff22;
+  }
+  .darkened .yours:nth-child(even)
+  {
+    background-image:linear-gradient(#00008822,#22224422);
+  }
+  .darkened .yours:hover
+  {
+    background-image:linear-gradient(#0005,#2225);
+    color:#ffffffdd;
+  }
+  .darkened tr>td
+  {
+    padding:20px;
+    padding-right:30px;
+    padding-left:30px;
+    border-radius:20px;
+  }
+  a
+  {
+    color:inherit;
+    text-decoration:none;
+  }
+</style>
+
+<div id="fav_colors">
+  <table style="padding:20px;background-image:linear-gradient(#cccccc,#aaaaaa);border-spacing:10px;border-radius:20px;font-weight:bold;color:#000033;" class="darkened">
+    <% @fav_colors.each do |fav_color| %>
+      <% if fav_color.user == current_user %>
+        <tr class="mine">
+          <td>
+            <%= link_to (render fav_color), fav_color %>
+          </td>
+          <td>
+            <%= link_to "edit", edit_fav_color_path(fav_color) %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% @fav_colors.each do |fav_color| %>
+      <% if fav_color.user != current_user %>
+        <tr class="yours">
+          <td>
+            <%= link_to (render fav_color), fav_color %>
+          </td>
+          <td>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <tr>
+      <td colspan="2">
+        <center>
+          <%= link_to "Make a new favorite color entry", new_fav_color_path %>
+        </center>
+      </td>
+    </tr>
+  </table>
+</div>

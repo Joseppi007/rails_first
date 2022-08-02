@@ -1,0 +1,10 @@
+<h1>Changing your favorite color info</h1>
+
+<%= render "form", fav_color: @fav_color %>
+
+<br>
+
+<div>
+  <%= link_to "View", @fav_color %> |
+  <%= link_to "Exit", fav_colors_path %>
+</div>
